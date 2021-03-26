@@ -7,3 +7,26 @@
 #greeting-container {
   margin-top: 20px;
 }
+
+#contribsTable {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#contribsTable td, #Table th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#contribsTable tr:nth-child(even){background-color: #f2f2f2;}
+
+#contribsTable tr:hover {background-color: #ddd;}
+
+#contribsTable th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: white;
+}
