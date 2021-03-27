@@ -7,16 +7,18 @@ import org.eclipse.jetty.servlet.DefaultServlet;
 import org.eclipse.jetty.webapp.Configuration;
 import org.eclipse.jetty.webapp.WebAppContext;
 import org.eclipse.jetty.webapp.WebInfConfiguration;
-import com.google.cloud.firestore.Firestore;
-import com.google.cloud.firestore.FirestoreOptions;
 
 /**
  * Starts up the server, including a DefaultServlet that handles static files, and any servlet
  * classes annotated with the @WebServlet annotation.
  */
 public class ServerMain {
-
   public static void main(final String[] args) throws Exception {
+    // Initialize an instance of Firestore
+    Database db = new Database(); 
+
+    db.initialize();
+
     // Create a server that listens on port 8080.
     final Server server = new Server(8080);
     final WebAppContext webAppContext = new WebAppContext();
@@ -46,13 +48,5 @@ public class ServerMain {
 
     // Keep the main thread alive while the server is running.
     server.join();
-
-    // Initialize instance of Firestore 
-    FirestoreOptions firestoreOptions =
-    FirestoreOptions.getDefaultInstance().toBuilder()
-        .setProjectId(projectId)
-        .setCredentials(GoogleCredentials.getApplicationDefault())
-        .build();
-    Firestore db = firestoreOptions.getService();
   }
 }
