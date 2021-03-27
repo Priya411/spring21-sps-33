@@ -8,68 +8,82 @@
   </head>
   <body>
     <div id="content">
-      <h1></h1>
+      <h1>Political Contributions Tracker</h1>
+
       <p>This is a test for the Political Contributions Tracker Table Page.
         <br>There will likely be a paragraph here explaining how to use everything.
         <br>This is my first prototype. I got the names below from a random name generator.</p>
 
-    <table id="contribsTable">
-        <tr>
-            <th>Name</th>
-            <th>Political Party</th>
-            <th>Contributions Amount</th>
-        </tr>
-        <tr>
-            <td><a href="testChart.html">Alfreds Futterkiste</a></td>
-            <td>Democrat</td>
-            <td>$1723</td>
-        </tr>
-        <tr>
-            <td>Carly Duffy</td>
-            <td>Democrat</td>
-            <td>$1723</td>
-        </tr>
-        <tr>
-            <td>Abel Franklin</td>
-            <td>Republican</td>
-            <td>$1723</td>
-        </tr>
-        <tr>
-            <td>Ernst Handel</td>
-            <td>Democrat</td>
-            <td>$1723</td>
-        </tr>
-        <tr>
-            <td>Ryley Ahmad</td>
-            <td>Democrat</td>
-            <td>$1723</td>
-        </tr>
-        <tr>
-            <td>Abdur Butler</td>
-            <td>Republican</td>
-            <td>$1723</td>
-        </tr>
-        <tr>
-            <td>Imogen Vega</td>
-            <td>Republican</td>
-            <td>$1723</td>
-        </tr>
-        <tr>
-            <td>Briony Rivas</td>
-            <td>Democrat</td>
-            <td>$1723</td>
-        </tr>
-        <tr>
-            <td>Stewart Wallis</td>
-            <td>Republican</td>
-            <td>$1723</td>
-        </tr>
-        <tr>
-            <td>Vincenzo Case</td>
-            <td>Republican</td>
-            <td>$1723</td>
-        </tr>
-    </table>
+      <!-- Prototype search bar -->
+      <div class="topnav">
+        <div class="search-container">
+          <!-- We may want our search to affect the data displayed in the table later on once we get it working dynamically, 
+            but showing a specific person's contribution page (chart) shows how a responsive search might work for now -->
+          <form action="/searchResult.html">
+            <input type="text" placeholder="Search by name" name="search">
+            <button type="submit"><i class="fa fa-search"></i></button>
+          </form>
+          </div>
+      </div>
+
+      <!-- Prototype table: hardcoded data for now -->
+      <table id="contribsTable">
+          <tr>
+              <th>Name</th>
+              <th>Political Party</th>
+              <th>Contributions Amount</th>
+          </tr>
+          <tr>
+              <td><a href="testChart.html">Alfreds Futterkiste</a></td>
+              <td>Democrat</td>
+              <td>$1723</td>
+          </tr>
+          <tr>
+              <td><a href="testChart.html">Carly Duffy</a></td>
+              <td>Democrat</td>
+              <td>$1723</td>
+          </tr>
+          <tr>
+              <td>Abel Franklin</td>
+              <td>Republican</td>
+              <td>$1723</td>
+          </tr>
+          <tr>
+              <td>Ernst Handel</td>
+              <td>Democrat</td>
+              <td>$1723</td>
+          </tr>
+          <tr>
+              <td>Ryley Ahmad</td>
+              <td>Democrat</td>
+              <td>$1723</td>
+          </tr>
+          <tr>
+              <td>Abdur Butler</td>
+              <td>Republican</td>
+              <td>$1723</td>
+          </tr>
+          <tr>
+              <td>Imogen Vega</td>
+              <td>Republican</td>
+              <td>$1723</td>
+          </tr>
+          <tr>
+              <td>Briony Rivas</td>
+              <td>Democrat</td>
+              <td>$1723</td>
+          </tr>
+          <tr>
+              <td>Stewart Wallis</td>
+              <td>Republican</td>
+              <td>$1723</td>
+          </tr>
+          <tr>
+              <td>Vincenzo Case</td>
+              <td>Republican</td>
+              <td>$1723</td>
+          </tr>
+      </table>
 
       <p>Click <a href="/hello">here</a> to see content created by server code.</p>
       <p>Click here to get a random message:</p>
