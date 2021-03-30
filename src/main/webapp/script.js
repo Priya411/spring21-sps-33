@@ -15,16 +15,25 @@
 /**
  * Adds a random greeting to the page.
  */
-function addRandomGreeting() {
-  const greetings =
-      ['Hello world!', '¡Hola Mundo!', '你好，世界！', 'Bonjour le monde!'];
+async function fecQuery() {
+    const params = new URLSearchParams({
+        query: document.getElementById('query').value
+    });
 
-  // Pick a random greeting.
-  const greeting = greetings[Math.floor(Math.random() * greetings.length)];
-
-  // Add it to the page.
-  const greetingContainer = document.getElementById('greeting-container');
-  greetingContainer.innerText = greeting;
+    const response = await fetch('/fec?'+ params.toString(), {method:'GET'});
+    const response_json = await response.json();
+    localStorage.setItem('fec_query_response',response_json);
+    console.log(response_json);
+    var htmlString = "<tr><th>Name</th><th>Political Party</th><th>Office</th></tr>";
+    for (entry of response_json) {
+        candidate = entry['results'][0];
+        name = candidate['name'];
+        party = candidate['party'];
+        office = candidate['office_full'];
+        htmlString += `<tr><td>${name}</td><td>${party}</td><td>${office}</td></tr>`;
+        console.log(htmlString);
+    }
+    document.getElementById("contribsTable").innerHTML = htmlString;
 }
 
 // Google Charts Library @ https://developers.google.com/chart 
