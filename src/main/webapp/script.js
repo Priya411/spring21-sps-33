@@ -12,20 +12,6 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-/**
- * Adds a random greeting to the page.
- */
-function addRandomGreeting() {
-  const greetings =
-      ['Hello world!', '¡Hola Mundo!', '你好，世界！', 'Bonjour le monde!'];
-
-  // Pick a random greeting.
-  const greeting = greetings[Math.floor(Math.random() * greetings.length)];
-
-  // Add it to the page.
-  const greetingContainer = document.getElementById('greeting-container');
-  greetingContainer.innerText = greeting;
-}
 
 // Google Charts Library @ https://developers.google.com/chart 
 // ---------------------------------------------------------------
@@ -63,9 +49,9 @@ function drawChart() {
         ]);
 
     const options = {
-        'title': 'Percentage of American adults investing in the stock market from 1999 - 2020',
+        'title': 'To-Do: Figure out which type of chart is best for our data',
         'legend': {position:'none'},
-        'backgroundColor': 'WhiteSmoke', 
+        'backgroundColor': 'White', 
         'colors':['#84a98c'],  
         'width':801,
         'height':400

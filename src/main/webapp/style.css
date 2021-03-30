@@ -4,9 +4,6 @@
   width: 650px;
 }
 
-#greeting-container {
-  margin-top: 20px;
-}
 
 /* Formatting for table */
 #contribsTable {
@@ -34,7 +31,7 @@
 /* End of formatting for table */
 
 
-
+/* Formatting for search bar */
 /* Add a black background color to the top navigation bar */
 .topnav {
   overflow: hidden;
@@ -52,10 +49,10 @@
   border: none;
 }
 
-/* Button not appearing correctly right now */
+/* To-Do: Add search icon to search button */
 .topnav .search-container button {
   float: right;
-  padding: 6px 10px;
+  padding: 16px 16px;
   margin-top: 8px;
   margin-right: 16px;
   background: #ddd;
@@ -66,3 +63,4 @@
 .topnav .search-container button:hover {
   background: #ccc;
 }
+/* End of formatting for search bar */
