@@ -39,15 +39,17 @@ public class Database {
             Map<String, Object> initialData = new HashMap<>();
 
             initialData.put(filePath.substring(39, 48), canStats);
-            
+                        
             ApiFuture<WriteResult> result; 
 
-            DocumentReference doc = db.collection("fec_data").document(stats[1]);
+            System.out.println(stats[1] + "\n");
 
+            DocumentReference doc = db.collection("fec_data").document(stats[1]);
+            
             try {
-                result = doc.set(initialData);
+                result = doc.update(filePath.substring(39, 48), canStats);
             } catch(Exception e){
-                result = doc.update(initialData);
+                result = doc.set(initialData, SetOptions.merge());
             }
 
             result.get(); 
