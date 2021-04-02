@@ -27,8 +27,6 @@ public class Database {
         
         Scanner input = new Scanner(fecData); 
 
-        System.out.println("Test start \n");
-
         while (input.hasNextLine()){
             String can = input.nextLine(); 
             String[] stats = can.split("\\|"); 
@@ -40,14 +38,18 @@ public class Database {
 
             initialData.put(filePath.substring(39, 48), canStats);
 
-            DocumentReference doc = db.collection("fec_data").document(stats[1]);
+            String candidateName = stats[1];
+
+            if (candidateName.contains("/")){
+                candidateName = candidateName.replace("/", "-");
+            }
+
+            DocumentReference doc = db.collection("fec_data").document(candidateName);
             
             ApiFuture<WriteResult> result = doc.set(initialData, SetOptions.merge());
 
             result.get(); 
         }
-
-        System.out.println("Test end \n");
         
         input.close();
     }

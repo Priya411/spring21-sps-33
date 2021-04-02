@@ -19,20 +19,8 @@ public class ServerMain {
 
     db.initialize();
 
-    // Add bulk data to database with its relative path 
-    db.addData("src/main/java/com/google/sps/Bulk Data/2019-2020.txt"); 
-    db.addData("src/main/java/com/google/sps/Bulk Data/2021-2022.txt");
-
-    /*
-    db.addData("src/main/java/com/google/sps/Bulk Data/2017-2018.txt"); 
-    db.addData("src/main/java/com/google/sps/Bulk Data/2015-2016.txt"); 
-    db.addData("src/main/java/com/google/sps/Bulk Data/2013-2014.txt"); 
-    db.addData("src/main/java/com/google/sps/Bulk Data/2011-2012.txt"); 
-    db.addData("src/main/java/com/google/sps/Bulk Data/2009-2010.txt"); 
-    db.addData("src/main/java/com/google/sps/Bulk Data/2007-2008.txt"); 
-    db.addData("src/main/java/com/google/sps/Bulk Data/2005-2006.txt"); 
-    db.addData("src/main/java/com/google/sps/Bulk Data/2003-2004.txt");
-    db.addData("src/main/java/com/google/sps/Bulk Data/2001-2002.txt"); 
+    /* Uncomment this section to add bulk data to database
+    db.addData(relative_file_path_to_your_data);
     */
 
     // Create a server that listens on port 8080.
