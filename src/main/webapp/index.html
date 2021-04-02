@@ -10,6 +10,8 @@
     <div id="content">
       <h1>Political Contributions Tracker</h1>
 
+      <!-- TO-DO: Update by MVP deadline: update the following paragraph from a prototype description to what will serve as the real intro paragraph. -->
+      
       <p>Welcome to the prototype of the Political Contributions Tracker.
         <br>
         <br>This project uses the <a href="https://api.open.fec.gov/developers/">OpenFEC API</a>.
@@ -20,8 +22,10 @@
       <!-- Prototype search bar -->
       <div class="topnav">
         <div class="search-container">
-          <!-- We may want our search to affect the data displayed in the table later on once we get it working dynamically, 
-            but showing a specific person's contribution page (chart) shows how a responsive search might work for now -->
+          <!-- TO-DO: Update the search functionality with the following comment's ideas in mind: -->
+          <!-- We want our search to affect the data displayed in the table later on once we get the table working dynamically (ex. limiting the people
+               shown in the table by what's been typed in the search bar), but showing a specific person's contribution page (chart) shows how a responsive
+               search might work for now. -->
           <form action="/searchResult.html">
             <input type="text" placeholder="Search by name" name="search">
             <button type="submit"><i class="fa fa-search"></i></button>
@@ -29,6 +33,7 @@
           </div>
       </div>
 
+      <!-- TO-DO: Replace prototype table with real candidate info (landing page should show table from database sorted by descending total contribution amount). -->
       <!-- Prototype table: hardcoded data for now -->
       <table id="contribsTable">
           <tr>
