@@ -31,8 +31,17 @@ public class Database {
             String can = input.nextLine(); 
             String[] stats = can.split("\\|"); 
 
-            CandidateStats canStats = new CandidateStats(stats[0], stats[18], stats[19], stats[4], stats[11], 
-            stats[12], stats[13], stats[17], stats[25], stats[26]);
+            CandidateStats canStats = new CandidateStats(
+                /*candidate id=*/stats[0], 
+                /*state=*/stats[18], 
+                /*district=*/stats[19], 
+                /*affiliation=*/stats[4], 
+                /*contributions from candidate=*/stats[11], 
+                /*loans from candidate=*/stats[12], 
+                /*other loans=*/stats[13], 
+                /*individiual contributions=*/stats[17], 
+                /*contributions from political committee=*/stats[25], 
+                /*contributions from party committee=*/stats[26]);
                 
             Map<String, Object> initialData = new HashMap<>();
 
