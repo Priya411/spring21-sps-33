@@ -40,6 +40,12 @@ public class Database {
 
             String candidateName = stats[1];
 
+            /* The candidate name must be error-checked as this will become a document ID. 
+             * Document IDs cannot contain forward slashes (/). 
+             * The bulk data we are working with contains instances of forward slashes.
+             * Therefore, these must be replaced to fit these constraints.
+             */
+        
             if (candidateName.contains("/")){
                 candidateName = candidateName.replace("/", "-");
             }
