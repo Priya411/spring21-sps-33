@@ -4,3 +4,4 @@
 .theia/
 .vscode/
 target/
+fec_api_key.txt

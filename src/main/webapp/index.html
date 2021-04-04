@@ -21,15 +21,13 @@
 
       <!-- Prototype search bar -->
       <div class="topnav">
-        <div class="search-container">
-          <!-- TO-DO: Update the search functionality with the following comment's ideas in mind: -->
-          <!-- We want our search to affect the data displayed in the table later on once we get the table working dynamically (ex. limiting the people
-               shown in the table by what's been typed in the search bar), but showing a specific person's contribution page (chart) shows how a responsive
-               search might work for now. -->
-          <form action="/searchResult.html">
-            <input type="text" placeholder="Search by name" name="search">
-            <button type="submit"><i class="fa fa-search"></i></button>
-          </form>
+        <div class="search-container" id="search-container">
+            <!-- We may want our search to affect the data displayed in the table later on once we get it working dynamically, 
+                but showing a specific person's contribution page (chart) shows how a responsive search might work for now -->
+            <form onsubmit="return false;" id="search-bar-form">
+                <input type="text" placeholder="Search by name" name="search" id="query">
+                <input type="submit"value="Search" onclick="fecQuery()"/>
+            </form>
           </div>
       </div>
 
@@ -39,57 +37,7 @@
           <tr>
               <th>Name</th>
               <th>Political Party</th>
-              <th>Contributions Amount</th>
-          </tr>
-          <tr>
-              <td><a href="testChart.html">Alfreds Futterkiste</a></td>
-              <td>Democrat</td>
-              <td>$1723</td>
-          </tr>
-          <tr>
-              <td><a href="testChart.html">Carly Duffy</a></td>
-              <td>Democrat</td>
-              <td>$1723</td>
-          </tr>
-          <tr>
-              <td>Abel Franklin</td>
-              <td>Republican</td>
-              <td>$1723</td>
-          </tr>
-          <tr>
-              <td>Ernst Handel</td>
-              <td>Democrat</td>
-              <td>$1723</td>
-          </tr>
-          <tr>
-              <td>Ryley Ahmad</td>
-              <td>Democrat</td>
-              <td>$1723</td>
-          </tr>
-          <tr>
-              <td>Abdur Butler</td>
-              <td>Republican</td>
-              <td>$1723</td>
-          </tr>
-          <tr>
-              <td>Imogen Vega</td>
-              <td>Republican</td>
-              <td>$1723</td>
-          </tr>
-          <tr>
-              <td>Briony Rivas</td>
-              <td>Democrat</td>
-              <td>$1723</td>
-          </tr>
-          <tr>
-              <td>Stewart Wallis</td>
-              <td>Republican</td>
-              <td>$1723</td>
-          </tr>
-          <tr>
-              <td>Vincenzo Case</td>
-              <td>Republican</td>
-              <td>$1723</td>
+              <th>Office</th>
           </tr>
       </table>
 
