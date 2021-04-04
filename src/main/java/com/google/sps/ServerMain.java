@@ -13,8 +13,15 @@ import org.eclipse.jetty.webapp.WebInfConfiguration;
  * classes annotated with the @WebServlet annotation.
  */
 public class ServerMain {
-
   public static void main(final String[] args) throws Exception {
+    // Initialize an instance of Firestore
+    Database db = new Database(); 
+
+    db.initialize();
+
+    /* Uncomment this section to add bulk data to database
+    db.addData(relative_file_path_to_your_data);
+    */
 
     // Create a server that listens on port 8080.
     final Server server = new Server(8080);
