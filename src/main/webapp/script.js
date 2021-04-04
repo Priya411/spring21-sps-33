@@ -72,9 +72,9 @@ function drawChart() {
         ]);
 
     const options = {
-        'title': 'Percentage of American adults investing in the stock market from 1999 - 2020',
+        'title': 'To-Do: Figure out which type of chart is best for our data',
         'legend': {position:'none'},
-        'backgroundColor': 'WhiteSmoke', 
+        'backgroundColor': 'White', 
         'colors':['#84a98c'],  
         'width':801,
         'height':400

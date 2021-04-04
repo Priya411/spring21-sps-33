@@ -4,9 +4,6 @@
   width: 650px;
 }
 
-#greeting-container {
-  margin-top: 20px;
-}
 
 #search-container {
     align-items: center;
@@ -40,5 +37,37 @@
 /* End of formatting for table */
 
 
-
+/* Formatting for search bar */
 /* Add a black background color to the top navigation bar */
+
+.topnav {
+  overflow: hidden;
+  background-color: #e9e9e9;
+}
+
+.topnav .search-container {
+  float: right;
+}
+
+.topnav input[type=text] {
+  padding: 6px;
+  margin-top: 8px;
+  font-size: 17px;
+  border: none;
+}
+
+/* To-Do: Add search icon to search button */
+.topnav .search-container button {
+  float: right;
+  padding: 16px 16px;
+  margin-top: 8px;
+  margin-right: 16px;
+  background: #ddd;
+  font-size: 17px;
+  border: none;
+}
+
+.topnav .search-container button:hover {
+  background: #ccc;
+}
+/* End of formatting for search bar */
