@@ -4,43 +4,54 @@
     <meta charset="UTF-8">
     <title>Political Contributions Tracker Table Page</title>
     <link rel="stylesheet" href="style.css">
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-firestore.js"></script>
     <script src="script.js"></script>
   </head>
   <body>
     <div id="content">
       <h1>Political Contributions Tracker</h1>
 
-      <!-- TO-DO: Update by MVP deadline: update the following paragraph from a prototype description to what will serve as the real intro paragraph. -->
+      <!-- TO-DO: Update by MVP deadline: 
+        update the following paragraph from a prototype description to what will serve as the real intro paragraph. -->
       
       <p>Welcome to the prototype of the Political Contributions Tracker.
         <br>
-        <br>This project uses the <a href="https://api.open.fec.gov/developers/">OpenFEC API</a>.
-        <br>All of the names currently included in the table are random and do not represent real people.
+        <br>This project uses Google Firestore and the <a href="https://api.open.fec.gov/developers/">OpenFEC API</a>.
+        <br>All data shown is populated using real data provided by the FEC. 
         <br>Use the search bar below to bring up a specific person's contributions chart page. In a future update,
             the search feature will dynamically alter the names shown in the table on the main page.</p>
 
       <!-- Prototype search bar -->
       <div class="topnav">
         <div class="search-container" id="search-container">
-            <!-- We may want our search to affect the data displayed in the table later on once we get it working dynamically, 
-                but showing a specific person's contribution page (chart) shows how a responsive search might work for now -->
+            <!-- We may want our search to affect the data displayed in the table later on once we get it working 
+                dynamically, but showing a specific person's contribution page (chart) shows how a responsive search 
+                might work for now -->
             <form onsubmit="return false;" id="search-bar-form">
                 <input type="text" placeholder="Search by name" name="search" id="query">
-                <input type="submit"value="Search" onclick="fecQuery()"/>
+                <input type="submit" value="Search" onclick="fecQuery()"/>
             </form>
           </div>
       </div>
 
-      <!-- TO-DO: Replace prototype table with real candidate info (landing page should show table from database sorted by descending total contribution amount). -->
-      <!-- Prototype table: hardcoded data for now -->
       <table id="contribsTable">
           <tr>
               <th>Name</th>
               <th>Political Party</th>
-              <th>Office</th>
+              <th>State</th>
+              <th>Contributions from Political Committees</th>
+              <th>Contributions from Party Committees</th>
+          </tr>
+          <tr>
+              <td id="candidate"></td>
+              <td id="party"></td>
+              <td id="state"></td>
+              <td id="conFromPoliticalComm"></td>
+              <td id="conFromPartyComm"></td>
           </tr>
       </table>
-
     </div>
   </body>
 </html>

@@ -1,9 +1,12 @@
+h1 {
+    text-align: center; 
+}
+
 #content {
   margin-left: auto;
   margin-right: auto;
   width: 650px;
 }
-
 
 #search-container {
     align-items: center;
@@ -28,18 +31,15 @@
 #contribsTable tr:hover {background-color: #ddd;}
 
 #contribsTable th {
-  padding-top: 12px;
-  padding-bottom: 12px;
-  text-align: left;
+  padding: 20px;
+  text-align: center;
   background-color: #4CAF50;
   color: white;
 }
 /* End of formatting for table */
 
-
 /* Formatting for search bar */
 /* Add a black background color to the top navigation bar */
-
 .topnav {
   overflow: hidden;
   background-color: #e9e9e9;
@@ -50,9 +50,9 @@
 }
 
 .topnav input[type=text] {
-  padding: 6px;
-  margin-top: 8px;
-  font-size: 17px;
+  padding: 5px;
+  font-size: 15px;
+  width: 520px; 
   border: none;
 }
 
