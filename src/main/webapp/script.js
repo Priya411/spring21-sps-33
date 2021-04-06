@@ -12,74 +12,36 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-/**
- * Adds a random greeting to the page.
- */
-async function fecQuery() {
-    const params = new URLSearchParams({
-        query: document.getElementById('query').value
+var firebaseConfig = {
+      apiKey: "AIzaSyA9jmDNzrZXS8XP0zBzOgSKB4_M-Ae5TT8",
+      authDomain: "spring21-sps-33.firebaseapp.com",
+      databaseURL: "https://spring21-sps-33-default-rtdb.firebaseio.com",
+      projectId: "spring21-sps-33",
+      storageBucket: "spring21-sps-33.appspot.com",
+      messagingSenderId: "398000493644",
+      appId: "1:398000493644:web:8c0086673917fd897f90e9"
+};
+
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+
+var db = firebase.firestore(); 
+
+// Reading data from database and writing it to the page
+db.collection("fec_data").where("2019-2020.affiliation", "==", "REP")
+    //.withConverter(dataConverter)
+    .get()
+    .then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+            // doc.data() is never undefined for query doc snapshots
+            var candidate = doc.data();
+            document.getElementById("candidate").innerHTML = doc.id;
+            document.getElementById("party").innerHTML = candidate["2019-2020"].affiliation;
+            document.getElementById("state").innerHTML = candidate["2019-2020"].state;
+            document.getElementById("conFromPoliticalComm").innerHTML = candidate["2019-2020"].conFromPoliticalComm;
+            document.getElementById("conFromPartyComm").innerHTML = candidate["2019-2020"].conFromPartyComm;
+        });
+    })
+    .catch((error) => {
+        console.log("Error getting documents: ", error);
     });
-
-    const response = await fetch('/fec?'+ params.toString(), {method:'GET'});
-    const response_json = await response.json();
-    localStorage.setItem('fec_query_response',response_json);
-    console.log(response_json);
-    var htmlString = "<tr><th>Name</th><th>Political Party</th><th>Office</th></tr>";
-    for (entry of response_json) {
-        candidate = entry['results'][0];
-        name = candidate['name'];
-        party = candidate['party'];
-        office = candidate['office_full'];
-        htmlString += `<tr><td>${name}</td><td>${party}</td><td>${office}</td></tr>`;
-        console.log(htmlString);
-    }
-    document.getElementById("contribsTable").innerHTML = htmlString;
-}
-
-// Google Charts Library @ https://developers.google.com/chart 
-// ---------------------------------------------------------------
-google.charts.load('current', {'packages':['corechart', 'line']});
-google.charts.setOnLoadCallback(drawChart);
-
-// Create a line chart and add it to the page.
-function drawChart() {
-    const data = new google.visualization.DataTable();
-    data.addColumn('string', 'Year');
-    data.addColumn('number', '%');
-        data.addRows([
-            ['1999', 58],
-            ['2000', 62],
-	        ['2001', 62],
-	        ['2002', 60],
-	        ['2003', 60],
-	        ['2004', 61],
-            ['2005', 62],
-            ['2006', 61],
-            ['2007', 65],
-            ['2008', 62],
-            ['2009', 57],
-            ['2010', 56],
-            ['2011', 54],
-            ['2012', 53],
-            ['2013', 52],
-            ['2014', 54],
-            ['2015', 55],
-            ['2016', 52],
-            ['2017', 54],
-            ['2018', 55],
-            ['2019', 55],
-            ['2020', 55],
-        ]);
-
-    const options = {
-        'title': 'To-Do: Figure out which type of chart is best for our data',
-        'legend': {position:'none'},
-        'backgroundColor': 'White', 
-        'colors':['#84a98c'],  
-        'width':801,
-        'height':400
-    };
-    
-    const chart = new google.visualization.LineChart(document.getElementById('chart-container'));
-    chart.draw(data, options);
-}
