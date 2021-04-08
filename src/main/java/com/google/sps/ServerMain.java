@@ -19,9 +19,7 @@ public class ServerMain {
 
     db.initialize();
 
-    /* Uncomment this section to add bulk data to database
-    db.addData(relative_file_path_to_your_data);
-    */
+    db.addData("src/main/java/com/google/sps/Bulk Data/2019-2020.txt"); //relative to source
 
     // Create a server that listens on port 8080.
     final Server server = new Server(8080);
