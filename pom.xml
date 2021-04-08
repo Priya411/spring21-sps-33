@@ -45,6 +45,21 @@
       <artifactId>jetty-annotations</artifactId>
       <version>${jetty.version}</version>
     </dependency>
+
+    <!-- Google Firestore -->
+    <dependency>
+        <groupId>com.google.cloud</groupId>
+        <artifactId>libraries-bom</artifactId>
+        <version>19.0.0</version>
+        <type>pom</type>
+        <scope>import</scope>
+    </dependency>
+
+    <dependency>
+        <groupId>com.google.cloud</groupId>
+        <artifactId>google-cloud-firestore</artifactId>
+        <version>2.2.0</version>
+    </dependency>
   </dependencies>
 
   <build>
