@@ -1,10 +1,6 @@
 package com.google.sps.servlets;
 
 import java.io.IOException;
-import java.net.URI;
-
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
 import java.util.ArrayList;
 import java.util.Map;
 
@@ -12,20 +8,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
-
-import com.google.cloud.firestore.Query;
-import com.google.cloud.firestore.Query.Direction;
-import com.google.cloud.firestore.QueryDocumentSnapshot;
-import com.google.cloud.firestore.QuerySnapshot;
 import com.google.api.core.ApiFuture;
 import com.google.cloud.firestore.DocumentSnapshot;
 
 @WebServlet("/candidatecontributionhistory")
 public class CandidateContributionHistoryServlet extends SetupServlet {
-
+    // not tested yet waiting on Henry's chart to test
     @Override
     public void doGet(final HttpServletRequest request, final HttpServletResponse response) throws IOException {
         try { 
