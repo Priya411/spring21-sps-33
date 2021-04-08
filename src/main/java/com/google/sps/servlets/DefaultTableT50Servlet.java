@@ -22,12 +22,9 @@ import com.google.cloud.firestore.QuerySnapshot;
 import com.google.api.core.ApiFuture;
 import com.google.cloud.firestore.DocumentSnapshot;
 
-/**
- * Handles requests sent to the /hello URL. Try running a server and navigating
- * to /hello!
- */
-@WebServlet("/database")
-public class DatabaseServlet extends SetupServlet {
+
+@WebServlet("/default")
+public class DefaultTableT50Servlet extends SetupServlet {
 
     @Override
     public void doGet(final HttpServletRequest request, final HttpServletResponse response) throws IOException {
@@ -39,7 +36,7 @@ public class DatabaseServlet extends SetupServlet {
                 String name = document.getId();
                 String party = document.getString("2019-2020.affiliation");
                 Double totalContribution = document.getDouble("2019-2020.totalContributions"); // make contribution a double        
-                htmlResponse += String.format("<tr><td>%s</td><td>%s</td><td>%.2f</td></tr>",name,party,"None",totalContribution);
+                htmlResponse += String.format("<tr><td>%s</td><td>%s</td><td>%.2f</td></tr>",name,party,totalContribution);
             }
             response.setContentType("application/json;");
             response.getWriter().println(htmlResponse);
