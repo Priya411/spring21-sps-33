@@ -27,21 +27,22 @@ firebase.initializeApp(firebaseConfig);
 
 var db = firebase.firestore(); 
 
-// Reading data from database and writing it to the page
-db.collection("fec_data").where("2019-2020.affiliation", "==", "REP")
-    //.withConverter(dataConverter)
-    .get()
-    .then((querySnapshot) => {
-        querySnapshot.forEach((doc) => {
-            // doc.data() is never undefined for query doc snapshots
-            var candidate = doc.data();
-            document.getElementById("candidate").innerHTML = doc.id;
-            document.getElementById("party").innerHTML = candidate["2019-2020"].affiliation;
-            document.getElementById("state").innerHTML = candidate["2019-2020"].state;
-            document.getElementById("conFromPoliticalComm").innerHTML = candidate["2019-2020"].conFromPoliticalComm;
-            document.getElementById("conFromPartyComm").innerHTML = candidate["2019-2020"].conFromPartyComm;
-        });
-    })
-    .catch((error) => {
-        console.log("Error getting documents: ", error);
+// Read data from the API and dynamically populate table 
+async function fecQuery() {
+    const params = new URLSearchParams({
+        query: document.getElementById('query').value
     });
+
+    const response = await fetch('/fec?'+ params.toString(), {method:'GET'});
+    const response_json = await response.json();
+    localStorage.setItem('fec_query_response',response_json);
+    var htmlString = "<tr><th>Name</th><th>Political Party</th><th>Office</th></tr>";
+    for (entry of response_json) {
+        candidate = entry['results'][0];
+        name = candidate['name'];
+        party = candidate['party'];
+        office = candidate['office_full'];
+        htmlString += `<tr><td>${name}</td><td>${party}</td><td>${office}</td></tr>`;
+    }
+    document.getElementById("contribsTable").innerHTML = htmlString;
+}

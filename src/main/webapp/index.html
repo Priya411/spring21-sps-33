@@ -26,9 +26,6 @@
       <!-- Prototype search bar -->
       <div class="topnav">
         <div class="search-container" id="search-container">
-            <!-- We may want our search to affect the data displayed in the table later on once we get it working 
-                dynamically, but showing a specific person's contribution page (chart) shows how a responsive search 
-                might work for now -->
             <form onsubmit="return false;" id="search-bar-form">
                 <input type="text" placeholder="Search by name" name="search" id="query">
                 <input type="submit" value="Search" onclick="fecQuery()"/>
@@ -40,16 +37,7 @@
           <tr>
               <th>Name</th>
               <th>Political Party</th>
-              <th>State</th>
-              <th>Contributions from Political Committees</th>
-              <th>Contributions from Party Committees</th>
-          </tr>
-          <tr>
-              <td id="candidate"></td>
-              <td id="party"></td>
-              <td id="state"></td>
-              <td id="conFromPoliticalComm"></td>
-              <td id="conFromPartyComm"></td>
+              <th>Office</th>
           </tr>
       </table>
     </div>
