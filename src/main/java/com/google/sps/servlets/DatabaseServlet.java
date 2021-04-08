@@ -38,15 +38,14 @@ public class DatabaseServlet extends SetupServlet {
             for (DocumentSnapshot document : top_50_tc_snapshot.get().getDocuments()) {
                 String name = document.getId();
                 String party = document.getString("2019-2020.affiliation");
-                String office = document.getString("2019-2020.office_full"); //need to make office_full field
                 Double totalContribution = document.getDouble("2019-2020.totalContributions"); // make contribution a double        
-                htmlResponse += String.format("<tr><td>%s</td><td>%s</td><td>%.2f</td></tr>",name,party,office,totalContribution);
+                htmlResponse += String.format("<tr><td>%s</td><td>%s</td><td>%.2f</td></tr>",name,party,"None",totalContribution);
             }
             response.setContentType("application/json;");
             response.getWriter().println(htmlResponse);
         }
         catch (Exception e) {
-            System.out.println("Database query failed");
+            System.out.println("Database query failed: \n"+e);
         }
     }
 }

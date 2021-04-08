@@ -19,7 +19,7 @@ public class ServerMain {
 
     db.initialize();
 
-    db.addData("src/main/java/com/google/sps/Bulk Data/2019-2020.txt"); //relative to source
+    //db.addData("src/main/java/com/google/sps/Bulk Data/2019-2020.txt"); //relative to source
 
     // Create a server that listens on port 8080.
     final Server server = new Server(8080);
