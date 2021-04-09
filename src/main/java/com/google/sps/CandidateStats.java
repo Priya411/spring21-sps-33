@@ -8,12 +8,13 @@ public class CandidateStats{
     public String state;
     public String district;
     public String affiliation; 
-    public String conFromCandidate;
-    public String loansFromCandidate;
-    public String otherLoans;
-    public String individualCon; 
-    public String conFromPoliticalComm; 
-    public String conFromPartyComm; 
+    public Double conFromCandidate;
+    public Double loansFromCandidate;
+    public Double otherLoans;
+    public Double individualCon; 
+    public Double conFromPoliticalComm; 
+    public Double conFromPartyComm;
+    public Double totalContributions;
     
     public CandidateStats(){
     }
@@ -24,11 +25,12 @@ public class CandidateStats{
         this.state = state;
         this.district = district;
         this.affiliation = affiliation; 
-        this.conFromCandidate = conFromCandidate;
-        this.loansFromCandidate = loansFromCandidate;
-        this.otherLoans = otherLoans;
-        this.individualCon = individualCon; 
-        this.conFromPoliticalComm = conFromPoliticalComm;
-        this.conFromPartyComm = conFromPartyComm; 
+        this.conFromCandidate = Double.parseDouble(conFromCandidate);
+        this.loansFromCandidate = Double.parseDouble(loansFromCandidate);
+        this.otherLoans = Double.parseDouble(otherLoans);
+        this.individualCon = Double.parseDouble(individualCon); 
+        this.conFromPoliticalComm = Double.parseDouble(conFromPoliticalComm);
+        this.conFromPartyComm = Double.parseDouble(conFromPartyComm); 
+        totalContributions = this.conFromPartyComm + this.conFromPoliticalComm + this.individualCon + this.conFromCandidate;
     }
 }
