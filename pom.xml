@@ -16,7 +16,7 @@
 
     <!-- Project-specific properties -->
     <exec.mainClass>com.google.sps.ServerMain</exec.mainClass>
-    <googleCloudProjectId>spring21-sps-36</googleCloudProjectId>
+    <googleCloudProjectId>spring21-sps-33</googleCloudProjectId>
   </properties>
 
   <dependencies>
@@ -102,6 +102,16 @@
                   <mainClass>${exec.mainClass}</mainClass>
                 </transformer>
               </transformers>
+              <filters>
+                    <filter>
+                        <artifact>*:*</artifact>
+                        <excludes>
+                            <exclude>META-INF/*.SF</exclude>
+                            <exclude>META-INF/*.DSA</exclude>
+                            <exclude>META-INF/*.RSA</exclude>
+                        </excludes>
+                    </filter>
+                </filters>
             </configuration>
           </execution>
         </executions>
@@ -113,7 +123,7 @@
         <artifactId>appengine-maven-plugin</artifactId>
         <version>2.2.0</version>
         <configuration>
-          <projectId>${googleCloudProjectId}</projectId>
+          <projectId>spring21-sps-33</projectId>
           <version>1</version>
         </configuration>
       </plugin>
