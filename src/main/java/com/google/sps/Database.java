@@ -32,7 +32,7 @@ public class Database {
             String[] stats = can.split("\\|"); 
 
             CandidateStats canStats = new CandidateStats(
-                /*candidate id=*/stats[0], 
+                /*candidate id=*/stats[1], 
                 /*state=*/stats[18], 
                 /*district=*/stats[19], 
                 /*affiliation=*/stats[4], 
@@ -47,7 +47,7 @@ public class Database {
 
             initialData.put(filePath.substring(39, 48), canStats);
 
-            String candidateName = stats[1];
+            String candidateId = stats[0];
 
             /* The candidate name must be error-checked as this will become a document ID. 
              * Document IDs cannot contain forward slashes (/). 
@@ -55,11 +55,8 @@ public class Database {
              * Therefore, these must be replaced to fit these constraints.
              */
         
-            if (candidateName.contains("/")){
-                candidateName = candidateName.replace("/", "-");
-            }
 
-            DocumentReference doc = db.collection("fec_data").document(candidateName);
+            DocumentReference doc = db.collection("fec_data").document(candidateId);
             
             ApiFuture<WriteResult> result = doc.set(initialData, SetOptions.merge());
 

@@ -11,15 +11,15 @@ import javax.servlet.http.HttpServletResponse;
 import com.google.api.core.ApiFuture;
 import com.google.cloud.firestore.DocumentSnapshot;
 
-@WebServlet("/candidatecontributionhistory")
+@WebServlet("/candidatefundingsource")
 public class CandidateFundingSourceServlet extends SetupServlet {
     // not tested yet waiting on Henry's chart to test
     @Override
     public void doGet(final HttpServletRequest request, final HttpServletResponse response) throws IOException {
         try { 
-            String candidateName = request.getParameter("name");
+            String candidateId = request.getParameter("candidateId");
             String year = request.getParameter("year");
-            ApiFuture<DocumentSnapshot> candidate_snapshot = db.collection("fec_data").document(candidateName).get(); // get candidate
+            ApiFuture<DocumentSnapshot> candidate_snapshot = db.collection("fec_data").document(candidateId).get(); // get candidate
             Object year_data = candidate_snapshot.get().get(year);
             Double conFromCandidate = ((Map<String, Double>) year_data).get("conFromCandidate");
             Double loansFromCandidate = ((Map<String, Double>) year_data).get("loansFromCandidate");

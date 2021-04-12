@@ -2,9 +2,10 @@ package com.google.sps.servlets;
 
 import java.io.IOException;
 import java.net.URI;
-
+import java.net.URLEncoder;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
 import javax.servlet.annotation.WebServlet;
@@ -25,7 +26,7 @@ public class FecApiServlet extends SetupServlet {
     @Override
     public void doGet(final HttpServletRequest request, final HttpServletResponse response) throws IOException {
         // build fec query/rquest
-        final String query = request.getParameter("query");
+        final String query = URLEncoder.encode(request.getParameter("query"), StandardCharsets.UTF_8);
         final HttpRequest fec_request = HttpRequest.newBuilder()
             .GET()
             .uri(URI.create("https://api.open.fec.gov/v1/names/candidates/?q=" + query + "&api_key=" + fec_api_key))

@@ -17,8 +17,8 @@ public class CandidateContributionHistoryServlet extends SetupServlet {
     @Override
     public void doGet(final HttpServletRequest request, final HttpServletResponse response) throws IOException {
         try { 
-            String candidateName = request.getParameter("name");
-            ApiFuture<DocumentSnapshot> candidate_snapshot = db.collection("fec_data").document(candidateName).get(); // get candidate
+            String candidateId = request.getParameter("candidateId");
+            ApiFuture<DocumentSnapshot> candidate_snapshot = db.collection("fec_data").document(candidateId).get(); // get candidate
             Map<String,Object> years =  candidate_snapshot.get().getData();
             ArrayList<ArrayList<Object>> results = new ArrayList<ArrayList<Object>>();
             ArrayList<Object> heading = new ArrayList<Object>();

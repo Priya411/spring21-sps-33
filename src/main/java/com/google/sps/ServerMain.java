@@ -19,7 +19,18 @@ public class ServerMain {
 
     db.initialize();
 
+    /*
     //db.addData("src/main/java/com/google/sps/Bulk Data/2019-2020.txt"); //relative to source
+    //db.addData("src/main/java/com/google/sps/Bulk Data/2017-2018.txt"); //relative to source
+    //db.addData("src/main/java/com/google/sps/Bulk Data/2015-2016.txt"); //relative to source
+    db.addData("src/main/java/com/google/sps/Bulk Data/2013-2014.txt"); //relative to source
+    db.addData("src/main/java/com/google/sps/Bulk Data/2011-2012.txt"); //relative to source
+    db.addData("src/main/java/com/google/sps/Bulk Data/2009-2010.txt"); //relative to source
+    db.addData("src/main/java/com/google/sps/Bulk Data/2007-2008.txt"); //relative to source
+    db.addData("src/main/java/com/google/sps/Bulk Data/2005-2006.txt"); //relative to source
+    db.addData("src/main/java/com/google/sps/Bulk Data/2003-2004.txt"); //relative to source
+    db.addData("src/main/java/com/google/sps/Bulk Data/2001-2002.txt"); //relative to source
+    */
 
     // Create a server that listens on port 8080.
     final Server server = new Server(8080);

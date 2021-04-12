@@ -4,7 +4,7 @@ import java.util.*;
 
 public class CandidateStats{
 
-    public String id; 
+    public String name; 
     public String state;
     public String district;
     public String affiliation; 
@@ -18,10 +18,10 @@ public class CandidateStats{
     
     public CandidateStats(){
     }
-    public CandidateStats(String id, String state, String district, String affiliation, 
+    public CandidateStats(String name, String state, String district, String affiliation, 
     String conFromCandidate, String loansFromCandidate, String otherLoans, String individualCon, 
     String conFromPoliticalComm, String conFromPartyComm){
-        this.id = id;; 
+        this.name = name;; 
         this.state = state;
         this.district = district;
         this.affiliation = affiliation; 
