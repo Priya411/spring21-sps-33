@@ -27,12 +27,11 @@ firebase.initializeApp(firebaseConfig);
 
 var db = firebase.firestore();
 
-//Uses the DefaultTableT50Servlet to populate data by default
+// Use the DefaultTableT50Servlet to populate data by default
 async function loadData(){
     const response = await fetch('/default', {method:'GET'});
-    console.log(response);
     const response_text = await response.text();
-    var header = "<tr><th>ID</th><th>Political Party</th><th>Total Contributions</th></tr>";
+    var header = "<tr><th>Name</th><th>Political Party</th><th>Total Contributions <br>(2019-2020)</th></tr>";
     var table_content = header + response_text; 
     document.getElementById("contribsTable").innerHTML = table_content;
 }
@@ -48,6 +47,7 @@ async function fecQuery() {
     if (query!=""){
         const response = await fetch('/fec?'+ params.toString(), {method:'GET'});
         const response_json = await response.json();
+        console.log(response_json);
         localStorage.setItem('fec_query_response',response_json);
         var htmlString = "<tr><th>Name</th><th>Political Party</th><th>Office</th></tr>";
         for (entry of response_json) {
@@ -58,6 +58,8 @@ async function fecQuery() {
             htmlString += `<tr><td>${name}</td><td>${party}</td><td>${office}</td></tr>`;
         }
         document.getElementById("contribsTable").innerHTML = htmlString;
+    } else {
+        loadData();
     }
 }
 
