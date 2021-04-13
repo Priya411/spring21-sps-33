@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.google.api.core.ApiFuture;
 import com.google.cloud.firestore.DocumentSnapshot;
 
-@WebServlet("/candidatecontributionhistory")
+@WebServlet("/candidatePage")
 public class CandidateContributionHistoryServlet extends SetupServlet {
     // not tested yet waiting on Henry's chart to test
     @Override
@@ -34,6 +34,8 @@ public class CandidateContributionHistoryServlet extends SetupServlet {
                 results.add(row);
             }
             response.setContentType("application/json;");
+            // write your html here and return it
+
             response.getWriter().println(results.toString());
         }
         catch (Exception e) {

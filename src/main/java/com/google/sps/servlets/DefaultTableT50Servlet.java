@@ -20,12 +20,14 @@ public class DefaultTableT50Servlet extends SetupServlet {
         try { 
             ApiFuture<QuerySnapshot> top_50_tc_snapshot = db.collection("fec_data")
                 .orderBy("2019-2020.totalContributions", Direction.DESCENDING).limit(50).get(); 
-            String htmlResponse = new String();
+            String htmlResponse = "<tr><th>Name</th><th>State</th><th>Party</th><th>Total Contibutions</th></tr>";
             for (DocumentSnapshot document : top_50_tc_snapshot.get().getDocuments()) {
-                String name = document.getId();
+                String name = document.getString("2019-2020.name");
+                String state = document.getString("2019-2020.state");
                 String party = document.getString("2019-2020.affiliation");
-                Double totalContribution = document.getDouble("2019-2020.totalContributions");    
-                htmlResponse += String.format("<tr><td>%s</td><td>%s</td><td>%.2f</td></tr>",name,party,totalContribution);
+                Double totalContribution = document.getDouble("2019-2020.totalContributions");
+                String query = "https://localhost";
+                htmlResponse += String.format("<tr><td><a href=\"%s\">%s</a></td><td>%s</td><td>%s</td><td>%.2f</td></tr>",query,name,state,party,totalContribution);
             }
             response.setContentType("application/json;");
             response.getWriter().println(htmlResponse);
