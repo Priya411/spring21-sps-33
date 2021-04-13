@@ -27,9 +27,9 @@ firebase.initializeApp(firebaseConfig);
 
 var db = firebase.firestore();
 
-//Uses FecApiServlet to populate data on load
+//Uses the DefaultTableT50Servlet to populate data by default
 async function loadData(){
-    const response = await fetch('/database', {method:'GET'});
+    const response = await fetch('/default', {method:'GET'});
     console.log(response);
     const response_text = await response.text();
     var header = "<tr><th>ID</th><th>Political Party</th><th>Total Contributions</th></tr>";
