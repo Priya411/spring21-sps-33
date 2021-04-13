@@ -1,5 +1,19 @@
 h1 {
     text-align: center; 
+    font-family: 'Commissioner', sans-serif;
+}
+
+p {
+    text-align: center;
+    font-family: 'Open Sans', sans-serif;
+}
+
+p:nth-child(3){
+    text-align: left;
+}
+
+body {
+    background-color: #595F72;
 }
 
 #content {
@@ -16,33 +30,44 @@ h1 {
 
 /* Formatting for table */
 #contribsTable {
-  font-family: Arial, Helvetica, sans-serif;
   border-collapse: collapse;
   width: 100%;
+  margin-top: 20px; 
 }
 
-#contribsTable td, #Table th {
-  border: 1px solid #ddd;
+#contribsTable td {
+  font-family: 'Open Sans', sans-serif;
+  border: 1px solid white;
   padding: 8px;
+}
+
+#contribsTable tr {
+  background-color: white;
 }
 
 #contribsTable tr:nth-child(even){background-color: #f2f2f2;}
 
-#contribsTable tr:hover {background-color: #ddd;}
+#contribsTable tr:hover {background-color: #b3c5d7;}
 
 #contribsTable th {
+  font-family: 'Commissioner', sans-serif;
   padding: 20px;
   text-align: center;
-  background-color: #4CAF50;
+  background-color: #C3D350;
   color: white;
 }
+
+#contribsTable th:first-child {border-top-left-radius: 15px;}
+
+#contribsTable th:last-child {border-top-right-radius: 15px;}
 /* End of formatting for table */
 
 /* Formatting for search bar */
 /* Add a black background color to the top navigation bar */
 .topnav {
   overflow: hidden;
-  background-color: #e9e9e9;
+  background-color: #C3D350;
+  border-radius: 15px;
 }
 
 .topnav .search-container {
@@ -54,6 +79,7 @@ h1 {
   font-size: 15px;
   width: 520px; 
   border: none;
+  border-radius: 8px;
 }
 
 /* To-Do: Add search icon to search button */

@@ -3,25 +3,22 @@
   <head>
     <meta charset="UTF-8">
     <title>Political Contributions Tracker Table Page</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Commissioner&family=Open+Sans&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-firestore.js"></script>
     <script src="script.js"></script>
   </head>
-  <body>
+  <body onload="loadData()">
     <div id="content">
       <h1>Political Contributions Tracker</h1>
-
-      <!-- TO-DO: Update by MVP deadline: 
-        update the following paragraph from a prototype description to what will serve as the real intro paragraph. -->
       
-      <p>Welcome to the prototype of the Political Contributions Tracker.
-        <br>
-        <br>This project uses Google Firestore and the <a href="https://api.open.fec.gov/developers/">OpenFEC API</a>.
-        <br>All data shown is populated using real data provided by the FEC. 
-        <br>Use the search bar below to bring up a specific person's contributions chart page. In a future update,
-            the search feature will dynamically alter the names shown in the table on the main page.</p>
+      <p>Welcome to the prototype for the Political Contributions Tracker.
+      <p>This project uses Google Firestore and the <a href="https://api.open.fec.gov/developers/">OpenFEC API</a>.
+      <br>All data shown is populated using real data provided by the FEC.
+      <br>Use the search bar below to bring up a specific person's contributions chart page.</p>
 
       <!-- Prototype search bar -->
       <div class="topnav">
@@ -34,11 +31,6 @@
       </div>
 
       <table id="contribsTable">
-          <tr>
-              <th>Name</th>
-              <th>Political Party</th>
-              <th>Office</th>
-          </tr>
       </table>
     </div>
   </body>

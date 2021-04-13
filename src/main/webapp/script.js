@@ -25,24 +25,39 @@ var firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
-var db = firebase.firestore(); 
+var db = firebase.firestore();
+
+//Uses FecApiServlet to populate data on load
+async function loadData(){
+    const response = await fetch('/database', {method:'GET'});
+    console.log(response);
+    const response_text = await response.text();
+    var header = "<tr><th>ID</th><th>Political Party</th><th>Total Contributions</th></tr>";
+    var table_content = header + response_text; 
+    document.getElementById("contribsTable").innerHTML = table_content;
+}
 
 // Read data from the API and dynamically populate table 
 async function fecQuery() {
+    let query = document.getElementById('query').value; 
+
     const params = new URLSearchParams({
-        query: document.getElementById('query').value
+        query: query
     });
 
-    const response = await fetch('/fec?'+ params.toString(), {method:'GET'});
-    const response_json = await response.json();
-    localStorage.setItem('fec_query_response',response_json);
-    var htmlString = "<tr><th>Name</th><th>Political Party</th><th>Office</th></tr>";
-    for (entry of response_json) {
-        candidate = entry['results'][0];
-        name = candidate['name'];
-        party = candidate['party'];
-        office = candidate['office_full'];
-        htmlString += `<tr><td>${name}</td><td>${party}</td><td>${office}</td></tr>`;
+    if (query!=""){
+        const response = await fetch('/fec?'+ params.toString(), {method:'GET'});
+        const response_json = await response.json();
+        localStorage.setItem('fec_query_response',response_json);
+        var htmlString = "<tr><th>Name</th><th>Political Party</th><th>Office</th></tr>";
+        for (entry of response_json) {
+            candidate = entry['results'][0];
+            name = candidate['name'];
+            party = candidate['party'];
+            office = candidate['office_full'];
+            htmlString += `<tr><td>${name}</td><td>${party}</td><td>${office}</td></tr>`;
+        }
+        document.getElementById("contribsTable").innerHTML = htmlString;
     }
-    document.getElementById("contribsTable").innerHTML = htmlString;
 }
+
