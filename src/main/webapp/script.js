@@ -61,3 +61,73 @@ async function fecQuery() {
     }
 }
 
+// Google Charts Library @ https://developers.google.com/chart 
+// ---------------------------------------------------------------
+google.charts.load('current', {'packages':['corechart', 'line']});
+google.charts.setOnLoadCallback(drawCandidateLineChart);
+google.charts.setOnLoadCallback(drawCandidatePieChart);
+
+// Line Chart: plot of total contributions per year for a candidate
+function drawCandidateLineChart() {
+    /*  // Make servlet call here to get array
+        // modeled after this:
+        const params = new URLSearchParams({
+        query: document.getElementById('query').value
+        });
+        const response = await fetch('/candidatecontributionhistory?'+ params.toString(), {method:'GET'});
+        //localStorage.setItem('candidatecontributionhistory_response',response_json);
+
+        log(response);
+        // returns a json -> log to debug, extract array */
+
+    // const data = new google.visualization.arrayToDataTable(array);       // Use this line instead of those below if we have an array as input
+    const data = new google.visualization.arrayToDataTable([
+          ['Year', '$'],
+          ['1988',  3980894],
+          ['2008',  14272654],
+          ['2020',  1074179976],
+        ]);
+  
+    const options = {
+        'title': 'Total Contributions Per Election',
+        'legend': {position:'none'},
+        'vAxis.logScale': 'true',
+        'vAxis.scaleType': 'log',   // Can only make log scales from continuous axis values
+        'backgroundColor': '#63687E', 
+        'colors':['#C3D350'],  
+        'width':1000,
+        'height':500,
+        //'tooltip.textStyle' : {'fontSize': 14},   // This could fix the tooltip text spilling out of its box, but is overridden by #linechart text in style.css which is necessary to make all the chart text black
+        //'margin-left': auto,                      // Meant to center the chart, but not working.
+        //'margin-right': auto
+    };
+    
+    const chart = new google.visualization.LineChart(document.getElementById('linechart'));
+    chart.draw(data, options);
+}
+
+// Pie Chart: Categories of funding sources for a candidate
+function drawCandidatePieChart() {
+
+    //const data = new google.visualization.arrayToDataTable(array);    // Use this line instead of those below if we have an array as input
+    const data = new google.visualization.arrayToDataTable([
+          ['Source', '$'],
+          ['Individual Contributions',  823669348],
+          ['Party Committee',  1170],
+          ['Other Committee',  243411324],
+          ['Offsets to Expenditures',  7021943],
+          ['Other Receipts', 77361]
+        ]);
+
+    const options = {
+        'title': 'Categories of Funding Sources for 2020',
+        'legend': {position:'none'},
+        'backgroundColor': '#63687E', 
+        //'colors':['#94C9A9', '#51567B', '#885053', '#FFFFFF'],  // Customize the colors of the pie chart sections 
+        'width':800,
+        'height':400
+    };
+    
+    const chart = new google.visualization.PieChart(document.getElementById('piechart'));
+    chart.draw(data, options);
+}

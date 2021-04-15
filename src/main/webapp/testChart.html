@@ -2,13 +2,23 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Political Contributions Tracker Table Page</title>
+    <title>Candidate Charts Page</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Commissioner&family=Open+Sans&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/charts/loader.js"></script>
     <script src="script.js"></script>
-  </head>
+  </head>   
   <body>
-    <p>Here is an example chart for a fake politician using fake data:</p>
-    <div id="chart-container"></div>
+    <h1>Joseph R. Biden</h1>
+        <h2>Running for President as a Democrat</h2>
+        <p id="border"> </p>
+        <h5>(Hover over charts for more data)</h5>
+    <div id="linechart" class="chart_center" style="border: 1px solid #ccc"></div>
+    <h3>Select an election year:</h3> <!-- Create dropdown menu for the years here -->
+    <div id="piechart" class="chart_center" style="border: 1px solid #ccc"></div>
   </body>
 </html>
