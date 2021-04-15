@@ -30,7 +30,7 @@ public class DefaultTableT50Servlet extends SetupServlet {
                 if (state == "00")
                     state = "None";
                     //System.out.println("in DT50, candidateId = " + candidateId + " .");
-                String query = "/candidatePage?"+candidateId;
+                String query = "/candidatePage?candidateId="+candidateId;
                 htmlResponse += String.format("<tr><td><a href=\"%s\">%s</a></td><td>%s</td><td>%s</td><td>%.2f</td></tr>",query,name,state,party,totalContribution);
             }
             response.setContentType("application/json;");

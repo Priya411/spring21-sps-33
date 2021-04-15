@@ -17,35 +17,32 @@ public class CandidatePageServlet extends SetupServlet {
     @Override
     public void doGet(final HttpServletRequest request, final HttpServletResponse response) throws IOException {
         try { 
-            // This line is getting null candidateIds when clicking a name in the defaultT50 table. 
-            // Inspect this by uncommenting the System.out.println lines, running the server, clicking a name in the table, and looking at your cloudshell terminal.
             String candidateId = request.getParameter("candidateId");
-            System.out.println("canpageserv accessed, candidateId = " + candidateId);
-            candidateId = "P20003851";  // Hardcoded temporary solution for the first candidate
+            System.out.println("CandidatePageServlet accessed, candidateId = " + candidateId);  // Check candidateId in console
+            //candidateId = "P20003851";  // Hardcoded temporary solution for the first candidate
             ApiFuture<DocumentSnapshot> candidate_snapshot = db.collection("fec_data").document(candidateId).get(); // get candidate
-            //System.out.println("test1");
             Map<String,Object> years =  candidate_snapshot.get().getData();
             ArrayList<ArrayList<Object>> results = new ArrayList<ArrayList<Object>>();
             ArrayList<Object> heading = new ArrayList<Object>();
             heading.add("Year");
             heading.add("Total Contributions");
             results.add(heading);
+            String name = " "; 
+            String y = " ";
+            Double totalC = 0.00;
             for(Map.Entry<String, Object> year : years.entrySet()) {
-                String y = year.getKey();
-                Double totalC = ((Map<String, Double>) year.getValue()).get("totalContributions");
+                y = year.getKey();
+                name = ((Map<String, String>) year.getValue()).get("name");
+                totalC = ((Map<String, Double>) year.getValue()).get("totalContributions");
                 ArrayList<Object> row = new ArrayList<Object>();
                 row.add(y);
                 row.add(totalC);
                 results.add(row);
-                // System.out.println(y + totalC + row); // Shows that the candidate's stats are being gathered properly.
+                System.out.println(y + " " + totalC + " " + row); // Shows that the candidate's stats are being gathered properly.
             }
-            // response.setContentType("application/json;");
-            // write your html here and return it
+            
             // you may have to copy the processing code from the file CandidateFundingSourceServlet if you want that information too
-            // Chart isn't showing, maybe it doesn't work because it's being written through Java, maybe it's because it has a height of 0 (I can't override that).
-            // The charts work perfectly fine if I plug it in to index.html.
-            // I've included everything necessary for the chart to work.
-
+            String insertName = "<p>Information for " + name + "</p>";
             response.getWriter().println("<!DOCTYPE html>" +
                 "<html>" +
                 "<head>" +
@@ -57,11 +54,12 @@ public class CandidatePageServlet extends SetupServlet {
                     "<script src=\"https://www.gstatic.com/firebasejs/8.3.2/firebase-app.js\"></script>" +
                     "<script src=\"https://www.gstatic.com/firebasejs/8.3.2/firebase-firestore.js\"></script>" +
                     "<script src=\"https://www.gstatic.com/charts/loader.js\"></script>" +
+                    "<script src=\"script.js\"></script>" +
                 "</head>" +
                 "<body>" +
                     "<div id=\"content\">" +
-                        "<p>Information for Miss Betsy Pauline Elgar</p>" +
-                        "<div id=\"linechart\" style=\"width:500px; height:600px\"></div>" +   // The charts don't work even though their html shows up correctly in the in-page inspect 
+                        insertName +
+                        "<div id=\"linechart\" style=\"width:500px; height:600px\"></div>" +
                         "<p> Chart here </p>" +
                     "</div>" +
                 "</body>" +
