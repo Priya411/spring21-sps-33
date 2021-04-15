@@ -66,6 +66,7 @@ async function fecQuery() {
 google.charts.load('current', {'packages':['corechart', 'line']});
 google.charts.setOnLoadCallback(drawCandidateLineChart);
 google.charts.setOnLoadCallback(drawCandidatePieChart);
+google.charts.setOnLoadCallback(drawDynamicLineChart);
 
 // Line Chart: plot of total contributions per year for a candidate
 function drawCandidateLineChart() {
@@ -129,5 +130,29 @@ function drawCandidatePieChart() {
     };
     
     const chart = new google.visualization.PieChart(document.getElementById('piechart'));
+    chart.draw(data, options);
+}
+
+// Line Chart: plot of total contributions per year for a candidate (non-hardcoded data)
+function drawDynamicLineChart() {
+    
+    //var array = // Get array from CandidatePageServlet (see servlet line 46 results.toString())
+    const data = new google.visualization.arrayToDataTable(array);
+  
+    const options = {
+        'title': 'Total Contributions Per Election',
+        'legend': {position:'none'},
+        'vAxis.logScale': 'true',
+        'vAxis.scaleType': 'log',   // Can only make log scales from continuous axis values
+        'backgroundColor': '#63687E', 
+        'colors':['#C3D350'],  
+        'width':1000,
+        'height':500,
+        //'tooltip.textStyle' : {'fontSize': 14},   // This could fix the tooltip text spilling out of its box, but is overridden by #linechart text in style.css which is necessary to make all the chart text black
+        //'margin-left': auto,                      // Meant to center the chart, but not working.
+        //'margin-right': auto
+    };
+    
+    const chart = new google.visualization.LineChart(document.getElementById('dynamicLineChart'));
     chart.draw(data, options);
 }

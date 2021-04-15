@@ -40,8 +40,14 @@ public class CandidatePageServlet extends SetupServlet {
                 results.add(row);
                 System.out.println(y + " " + totalC + " " + row); // Shows that the candidate's stats are being gathered properly.
             }
+
+            //response.setContentType("application/json;");
+            //response.getWriter().println(results.toString());
+            System.out.println("results.toString() = " + results.toString());      
             
             // you may have to copy the processing code from the file CandidateFundingSourceServlet if you want that information too
+
+            // To-Do: Pass the array "results" to function drawDynamicLineChart() in script.js, change line 68 in this file to  "<div id=\"dynamicLineChart\"", finish styling
             String insertName = "<p>Information for " + name + "</p>";
             response.getWriter().println("<!DOCTYPE html>" +
                 "<html>" +
@@ -64,8 +70,6 @@ public class CandidatePageServlet extends SetupServlet {
                     "</div>" +
                 "</body>" +
                 "</html>");
-            
-            // response.getWriter().println(results.toString());
         }
         catch (Exception e) {
             System.out.println("Database query failed in cps: \n"+e);
