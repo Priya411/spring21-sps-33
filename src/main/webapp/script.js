@@ -31,9 +31,7 @@ var db = firebase.firestore();
 async function loadData(){
     const response = await fetch('/default', {method:'GET'});
     const response_text = await response.text();
-    var header = "<tr><th>Name</th><th>Political Party</th><th>Total Contributions <br>(2019-2020)</th></tr>";
-    var table_content = header + response_text; 
-    document.getElementById("contribsTable").innerHTML = table_content;
+    document.getElementById("contribsTable").innerHTML = response_text;
 }
 
 // Find total contributions for a candidate for a specific year

@@ -11,8 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 import com.google.api.core.ApiFuture;
 import com.google.cloud.firestore.DocumentSnapshot;
 
-@WebServlet("/candidatecontributionhistory")
-public class CandidateContributionHistoryServlet extends SetupServlet {
+@WebServlet("/candidatePage")
+public class CandidatePageServlet extends SetupServlet {
     // not tested yet waiting on Henry's chart to test
     @Override
     public void doGet(final HttpServletRequest request, final HttpServletResponse response) throws IOException {
@@ -34,6 +34,9 @@ public class CandidateContributionHistoryServlet extends SetupServlet {
                 results.add(row);
             }
             response.setContentType("application/json;");
+            // write your html here and return it
+            // you may have to copy the processing code from the file CandidateFundingSourceServlet if you want that information too
+
             response.getWriter().println(results.toString());
         }
         catch (Exception e) {
