@@ -36,6 +36,23 @@ async function loadData(){
     document.getElementById("contribsTable").innerHTML = table_content;
 }
 
+async function loadContributions(){
+    year = "2005-2006"; 
+    var docRef = db.collection("fec_data").doc(id);
+
+    docRef.get().then((doc) => {
+        if (doc.exists) {
+            var candidate = doc.data(); 
+            console.log(candidate[year].totalContributions);
+            return candidate[year].totalContributions; 
+        } else {
+            return null; 
+        }
+    }).catch((error) => {
+        console.log("Error getting document:", error);
+    });
+}
+
 // Read data from the API and dynamically populate table 
 async function fecQuery() {
     let query = document.getElementById('query').value; 
@@ -49,13 +66,21 @@ async function fecQuery() {
         const response_json = await response.json();
         console.log(response_json);
         localStorage.setItem('fec_query_response',response_json);
-        var htmlString = "<tr><th>Name</th><th>Political Party</th><th>Office</th></tr>";
+        var htmlString = "<tr><th>Name</th><th>Political Party</th><th>Total Contributions</th></tr>";
+
         for (entry of response_json) {
             candidate = entry['results'][0];
             name = candidate['name'];
             party = candidate['party'];
-            office = candidate['office_full'];
-            htmlString += `<tr><td>${name}</td><td>${party}</td><td>${office}</td></tr>`;
+            id = candidate['candidate_id'];
+
+            totalCon = await loadContributions(); 
+            //console.log(totalCon);
+            if (totalCon!=null){
+                htmlString += `<tr><td>${name}</td><td>${party}</td><td>${totalCon}</td></tr>`;
+            } else {
+                htmlString += `<tr><td>${name}</td><td>${party}</td><td>---</td></tr>`;
+            }
         }
         document.getElementById("contribsTable").innerHTML = htmlString;
     } else {
