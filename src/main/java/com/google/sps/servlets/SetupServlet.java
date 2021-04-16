@@ -24,7 +24,7 @@ public class SetupServlet extends HttpServlet {
     private void set_fec_api_key() {
         // get api key
         try {
-            final BufferedReader api_file = new BufferedReader(new FileReader("config/fec_api_key.txt"));
+            final BufferedReader api_file = new BufferedReader(new FileReader("fec_api_key.txt"));
             fec_api_key = api_file.readLine();
             api_file.close();
         }
