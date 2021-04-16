@@ -34,6 +34,28 @@ async function loadData(){
     document.getElementById("contribsTable").innerHTML = response_text;
 }
 
+// Find total contributions for a candidate for a specific year
+async function loadContributions(id, year){
+    var docRef = db.collection("fec_data").doc(id);
+    const doc = await docRef.get();
+    try {
+        if (doc.exists) {
+            var candidate = doc.data();
+            con = candidate[year].totalContributions;
+
+            if (con!=null){
+                return con;
+            } else {
+                return null;
+            }
+        } else {
+            return null; 
+        }
+    } catch(error){
+        console.log(error)
+    }
+}
+
 // Read data from the API and dynamically populate table 
 async function fecQuery() {
     let query = document.getElementById('query').value; 
@@ -47,15 +69,40 @@ async function fecQuery() {
         const response_json = await response.json();
         console.log(response_json);
         localStorage.setItem('fec_query_response',response_json);
-        var htmlString = "<tr><th>Name</th><th>Political Party</th><th>Office</th></tr>";
+
+        var htmlString = "<tr><th>Name</th><th>Political Party</th><th>Total Contributions <p style=\"visibility:hidden;\" id=\"currentYear\">hello</p><form><select id =\"yearForm\" onchange=\"fecQuery()\"><option>---Choose a year---</option><option>2001-2002</option><option>2003-2004</option><option>2005-2006</option><option>2007-2008</option><option>2009-2010</option><option>2011-2012</option><option>2013-2014</option><option>2015-2016</option><option>2017-2018</option><option>2019-2020</option><option>2021-2022</option></form></th></tr>";
+
+        var yearForm = document.getElementById("yearForm");
+        var year; 
+
+        if (yearForm!=null){
+            year = yearForm.options[yearForm.selectedIndex].text;
+            if (year=="---Choose a year---"){
+                year = null;
+            } 
+        }
+        
         for (entry of response_json) {
             candidate = entry['results'][0];
             name = candidate['name'];
             party = candidate['party'];
-            office = candidate['office_full'];
-            htmlString += `<tr><td>${name}</td><td>${party}</td><td>${office}</td></tr>`;
+            id = candidate['candidate_id'];
+
+            if (year!=null){
+                totalCon = await loadContributions(id, year); 
+                
+                if (totalCon!=null){
+                    htmlString += `<tr><td>${name}</td><td>${party}</td><td>${totalCon}</td></tr>`;
+                } else {
+                    htmlString += `<tr><td>${name}</td><td>${party}</td><td>---</td></tr>`;
+                }
+            } else {
+                htmlString += `<tr><td>${name}</td><td>${party}</td><td>---</td></tr>`;
+            }
         }
         document.getElementById("contribsTable").innerHTML = htmlString;
+        document.getElementById("currentYear").style.visibility = "visible"; 
+        document.getElementById("currentYear").innerHTML = "(" + year + ")"; 
     } else {
         loadData();
     }
