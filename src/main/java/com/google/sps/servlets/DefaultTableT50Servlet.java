@@ -29,14 +29,15 @@ public class DefaultTableT50Servlet extends SetupServlet {
                 String candidateId = document.getId();
                 if (state == "00")
                     state = "None";
-                String query = "/candidatePage?"+candidateId;
+                    //System.out.println("in DT50, candidateId = " + candidateId + " .");
+                String query = "/candidatePage?candidateId="+candidateId;
                 htmlResponse += String.format("<tr><td><a href=\"%s\">%s</a></td><td>%s</td><td>%s</td><td>%.2f</td></tr>",query,name,state,party,totalContribution);
             }
             response.setContentType("application/json;");
             response.getWriter().println(htmlResponse);
         }
         catch (Exception e) {
-            System.out.println("Database query failed: \n"+e);
+            System.out.println("Database query failed in t50: \n"+e);
         }
     }
 }

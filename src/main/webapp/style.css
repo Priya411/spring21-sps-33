@@ -3,6 +3,21 @@ h1 {
     font-family: 'Commissioner', sans-serif;
 }
 
+h2 {
+    text-align: center; 
+    font-family: 'Commissioner', sans-serif;
+}
+
+h3 {
+    text-align: left;
+    font-family: 'Comissioner', sans-serif;
+}
+
+h5 {
+    text-align: center; 
+    font-family: 'Commissioner', sans-serif;
+}
+
 p {
     text-align: center;
     font-family: 'Open Sans', sans-serif;
@@ -14,6 +29,14 @@ p:nth-child(3){
 
 body {
     background-color: #595F72;
+}
+
+#border {
+  border-bottom: 2px solid #C3D350;
+  padding-bottom: 4px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 500px;
 }
 
 #content {
@@ -97,3 +120,20 @@ body {
   background: #ccc;
 }
 /* End of formatting for search bar */
+
+#linechart text{
+    fill: black !important;
+    font-size: 16px;
+    font-family: 'Open Sans', sans-serif;
+}
+#piechart text{
+    fill: black !important;
+    font-size: 16px;
+    font-family: 'Open Sans', sans-serif;
+}
+
+/* Meant to center the charts, but currently not working */
+.chart_center {
+    margin: auto;
+    display: inline-block;
+}
